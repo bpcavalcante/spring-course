@@ -1,0 +1,43 @@
+package com.springcourse.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.springcourse.domain.User;
+import com.springcourse.repository.UserRepository;
+
+@Service
+public class UserService {
+
+	@Autowired private UserRepository userRepository;
+	
+	public User save(User user) {
+		User createdUser = userRepository.save(user);
+		return createdUser;
+	}
+	
+	
+	public User update(User user) {
+		User updatedUser = userRepository.save(user);
+		return updatedUser;
+	}
+	
+	public User getById(Long id) {
+		Optional<User> result = userRepository.findById(id);
+	}
+	
+	
+	// update
+	
+	
+	// get
+	
+	
+	// list
+	
+	
+	//login
+	
+}
