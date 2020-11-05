@@ -1,0 +1,31 @@
+package com.springcourse.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.springcourse.domain.Request;
+import com.springcourse.repository.RequestRepository;
+
+@Service
+public class RequestService {
+
+	@Autowired private RequestRepository requestRepository;
+	
+	public Request save(Request request) {
+		Request createdRequest = requestRepository.save(request);
+		
+		return createdRequest;
+	}
+	// save
+	
+	
+	// upadate
+	
+	// get
+	
+	// list
+	
+	// list by owner 
+	
+	
+}
