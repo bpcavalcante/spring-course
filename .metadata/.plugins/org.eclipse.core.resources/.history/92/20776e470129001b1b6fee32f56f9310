@@ -67,7 +67,7 @@ public class UserResource {
 		return ResponseEntity.ok(loggedUser);
 	}
 	
-	// Trazer as request de acordo com o ID do usuário
+	//
 	@GetMapping("/{id}/requests")
 	public ResponseEntity<List<Request>> listAllRequestsById(@PathVariable(name = "id") Long id){
 		List<Request> requests = requestService.listAllByOwnerId(id);
