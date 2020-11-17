@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="RequestRepositoryTests.updateStatusTest" project="spring-course" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.springcourse.repository.RequestRepositoryTests" time="0.419" displayname="RequestRepositoryTests" uniqueid="[engine:junit-vintage]/[runner:com.springcourse.repository.RequestRepositoryTests]">
-    <testcase name="updateStatusTest" classname="com.springcourse.repository.RequestRepositoryTests" time="0.419" displayname="updateStatusTest" uniqueid="[engine:junit-vintage]/[runner:com.springcourse.repository.RequestRepositoryTests]/[test:updateStatusTest(com.springcourse.repository.RequestRepositoryTests)]"/>
-  </testsuite>
-</testrun>

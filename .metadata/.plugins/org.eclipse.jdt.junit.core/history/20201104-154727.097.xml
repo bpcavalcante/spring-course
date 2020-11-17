@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="UserRepositoryTests" project="spring-course" tests="5" started="5" failures="0" errors="0" ignored="0">
-  <testsuite name="com.springcourse.repository.UserRepositoryTests" time="3.671" displayname="UserRepositoryTests" uniqueid="[engine:junit-vintage]/[runner:com.springcourse.repository.UserRepositoryTests]">
-    <testcase name="AsaveTest" classname="com.springcourse.repository.UserRepositoryTests" time="2.871" displayname="AsaveTest" uniqueid="[engine:junit-vintage]/[runner:com.springcourse.repository.UserRepositoryTests]/[test:AsaveTest(com.springcourse.repository.UserRepositoryTests)]"/>
-    <testcase name="getByIdTest" classname="com.springcourse.repository.UserRepositoryTests" time="0.124" displayname="getByIdTest" uniqueid="[engine:junit-vintage]/[runner:com.springcourse.repository.UserRepositoryTests]/[test:getByIdTest(com.springcourse.repository.UserRepositoryTests)]"/>
-    <testcase name="listTest" classname="com.springcourse.repository.UserRepositoryTests" time="0.021" displayname="listTest" uniqueid="[engine:junit-vintage]/[runner:com.springcourse.repository.UserRepositoryTests]/[test:listTest(com.springcourse.repository.UserRepositoryTests)]"/>
-    <testcase name="loginTest" classname="com.springcourse.repository.UserRepositoryTests" time="0.038" displayname="loginTest" uniqueid="[engine:junit-vintage]/[runner:com.springcourse.repository.UserRepositoryTests]/[test:loginTest(com.springcourse.repository.UserRepositoryTests)]"/>
-    <testcase name="updateTest" classname="com.springcourse.repository.UserRepositoryTests" time="0.617" displayname="updateTest" uniqueid="[engine:junit-vintage]/[runner:com.springcourse.repository.UserRepositoryTests]/[test:updateTest(com.springcourse.repository.UserRepositoryTests)]"/>
-  </testsuite>
-</testrun>
