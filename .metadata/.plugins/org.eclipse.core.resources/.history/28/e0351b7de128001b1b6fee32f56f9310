@@ -1,0 +1,5 @@
+package com.springcourse.resource;
+
+public class RequestResource {
+
+}
