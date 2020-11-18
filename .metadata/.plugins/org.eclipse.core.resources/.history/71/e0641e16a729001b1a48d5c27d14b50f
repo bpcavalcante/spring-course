@@ -25,7 +25,6 @@ public class RequestStageResource {
 		RequestStage createdRequestStage = stageService.save(requestStage);
 		return ResponseEntity.status(HttpStatus.CREATED).body(createdRequestStage);
 	}
-	
 	// Get By
 	@GetMapping("/{id}")
 	public ResponseEntity<RequestStage> getById(@PathVariable(name = "id") Long id){
@@ -33,4 +32,5 @@ public class RequestStageResource {
 		return ResponseEntity.ok(stage);
 	}
 	
+	// list all by request id 
 }
