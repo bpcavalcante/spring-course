@@ -2,6 +2,7 @@ package com.springcourse.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,23 +12,29 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.springcourse.domain.enums.Role;
+import com.springcourse.domain.enums.RequestState;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
-@Entity (name = "user")
-public class User implements Serializable {
+@Entity(name = "request")
+public class Request implements Serializable{
 	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -35,28 +42,24 @@ public class User implements Serializable {
 	private Long id;
 	
 	@Column(length = 75, nullable = false)
-	private String name;
+	private String subject;
 	
-	@Column(length = 75, nullable = false, unique = true)
-	private String email;
+	@Column(columnDefinition = "text")
+	private String description;
 	
-	@Getter(onMethod = @__({@JsonIgnore}))
-	@Setter(onMethod = @__({@JsonProperty}))
-	@Column(length = 100, nullable = false)
-	private String password;
+	@Column(name = "creation_date", nullable = false, updatable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date creationDate;
 	
-	@Column(length = 20, nullable = false)
+	@Column(length = 12, nullable = false)
 	@Enumerated(EnumType.STRING)
-	private Role role;
+	private RequestState state;
 	
-	@Getter(onMethod = @__({@JsonIgnore}))
-	@OneToMany(mappedBy = "owner")
-	private List<Request> requests = new ArrayList<Request>();
+	@ManyToOne
+	@JoinColumn(name = "owner_id", nullable = false)
+	private User owner;
 	
-	@Getter(onMethod = @__({@JsonIgnore})) // Ignorando quando puxo o usuário por ele ser independente
-	@OneToMany(mappedBy = "owner")
+	@OneToMany(mappedBy = "request")
 	private List<RequestStage> stages = new ArrayList<RequestStage>();
-	
-	
 
 }
