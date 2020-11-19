@@ -38,8 +38,7 @@ public class UserService {
 	public User getById(Long id) {
 		Optional<User> result = userRepository.findById(id);
 		
-		// Verificar se tem um user com  id informado caso não tenha exibir a mensagem
-		return result.orElseThrow(() -> new NotFoundException("Este id do usuário não existe = " + id));
+		return result.orElseThrow(() - > new NotFoundException("Este id não existe = " + id));
 	}
 	
 	

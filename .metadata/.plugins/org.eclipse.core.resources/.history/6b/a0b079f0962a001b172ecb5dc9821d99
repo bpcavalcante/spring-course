@@ -34,7 +34,7 @@ public class RequestService {
 	
 	public Request getById(Long id) {
 		Optional<Request> result = requestRepository.findById(id);
-		return result.orElseThrow(() -> new NotFoundException("O id desta request não existe = " + id));
+		return result.orElseThrow(() -> new NotFoundException("Este id não existe = " + id));
 	}
 	
 	public List<Request> listAll(){

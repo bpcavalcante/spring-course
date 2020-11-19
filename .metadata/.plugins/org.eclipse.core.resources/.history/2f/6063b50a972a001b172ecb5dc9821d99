@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.springcourse.domain.RequestStage;
 import com.springcourse.domain.enums.RequestState;
-import com.springcourse.exception.NotFoundException;
 import com.springcourse.repository.RequestRepository;
 import com.springcourse.repository.RequestStageRepository;
 
@@ -36,8 +35,7 @@ public class RequestStageService {
 	public RequestStage getById(Long id) {
 		Optional<RequestStage> result = requestStageRepository.findById(id);
 	
-		return result.orElseThrow(() -> new NotFoundException("O id do status desta request não existe = " + id));
-
+		return result.get();
 	}
 	
 	public List<RequestStage> listAllByRequestId(Long requestId){
