@@ -1,0 +1,5 @@
+package com.springcourse.model;
+
+public class PageRequestModel {
+
+}
