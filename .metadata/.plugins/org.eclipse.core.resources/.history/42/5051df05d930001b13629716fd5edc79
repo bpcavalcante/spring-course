@@ -20,7 +20,6 @@ import com.springcourse.domain.Request;
 import com.springcourse.domain.RequestStage;
 import com.springcourse.domain.User;
 import com.springcourse.dto.RequestSavedto;
-import com.springcourse.dto.RequestUpdatedto;
 import com.springcourse.model.PageModel;
 import com.springcourse.model.PageRequestModel;
 import com.springcourse.service.RequestService;
@@ -43,8 +42,7 @@ public class RequestResource {
 	
 	// update
 	@PutMapping("/{id}")
-	public ResponseEntity<Request> update (@PathVariable(name = "id") Long id,@RequestBody @Valid RequestUpdatedto requestdto){
-		Request request = requestdto.transformToRequest();
+	public ResponseEntity<Request> update (@PathVariable(name = "id") Long id,@RequestBody Request request){
 		request.setId(id);
 		
 		Request updatedRequest = requestService.update(request);
