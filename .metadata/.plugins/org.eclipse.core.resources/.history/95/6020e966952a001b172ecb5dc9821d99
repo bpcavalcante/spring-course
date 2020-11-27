@@ -1,5 +1,0 @@
-package com.springcourse.exception;
-
-public class NotFoundException {
-
-}
