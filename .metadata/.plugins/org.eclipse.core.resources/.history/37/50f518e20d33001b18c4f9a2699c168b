@@ -1,0 +1,11 @@
+package com.springcourse.resource;
+
+import com.springcourse.resource.exception.ApiError;
+
+public class ApiErrorList extends ApiError {
+	
+	
+	
+	
+
+}

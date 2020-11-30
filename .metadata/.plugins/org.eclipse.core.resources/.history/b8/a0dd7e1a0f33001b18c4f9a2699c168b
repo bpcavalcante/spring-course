@@ -1,0 +1,5 @@
+package com.springcourse.resource.exception;
+
+public class ApiErrorList {
+
+}
