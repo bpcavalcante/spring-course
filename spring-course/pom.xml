@@ -12,12 +12,13 @@
 	<groupId>com.spring-course</groupId>
 	<artifactId>spring-course</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 	<name>spring-course</name>
 	<description>Projeto desenvolvido , para treinar criação de API com Spring Boot.</description>
-
+	<packaging>war</packaging>
+	
 	<properties>
 		<java.version>1.8</java.version>
+		<skipTests>true</skipTests>
 	</properties>
 
 	<dependencies>
