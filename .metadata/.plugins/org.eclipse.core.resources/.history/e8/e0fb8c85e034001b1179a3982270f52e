@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticatedPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -88,8 +87,6 @@ public class UserResource {
 	public ResponseEntity<User> login (@RequestBody @Valid UserLogindto user){
 		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user.getEmail(),user.getPassword());
 		 org.springframework.security.core.Authentication auth =  authManager.authenticate(token);
-		 
-		 SecurityContextHolder.getContext().setAuthentication(auth);
 		return ResponseEntity.ok(null);
 	}
 	
