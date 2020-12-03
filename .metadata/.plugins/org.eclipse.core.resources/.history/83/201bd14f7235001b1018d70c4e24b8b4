@@ -105,7 +105,9 @@ public class UserResource {
 		 String email = userSpring.getUsername();
 		 List<String> roles = userSpring.getAuthorities().stream()
 				 .map(authority -> authority.getAuthority()).collect(Collectors.toList());
-		 		 
+		 
+		 jwtManager.createToken(email, roles);
+		 
 		return ResponseEntity.ok(jwtManager.createToken(email, roles));
 	}
 	
