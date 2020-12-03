@@ -1,0 +1,27 @@
+package com.springcourse.security;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
+
+import com.springcourse.repository.UserRepository;
+
+@Component("accessManager")
+public class AccessManager {
+
+	@Autowired
+	private UserRepository userRepository;
+	
+	// Verificar se o usuario é o mesmo usuario do token
+	public boolean isOwner(Long id) {
+		String email = (String)SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
+		
+		
+	}
+	
+	// Verificar se o usuario do pedido é o mesmo usuario do token
+	public boolean isRequestOwner(Long id) {
+		
+	}
+}

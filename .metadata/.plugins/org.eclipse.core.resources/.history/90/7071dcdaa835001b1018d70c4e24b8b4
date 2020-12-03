@@ -47,7 +47,7 @@ public class RequestResource {
 	}
 	
 	// update
-	@PreAuthorize("@accessManager.isRequestOwner(#id)") // Se retornar um true sgnifica que é o usuario é o mesmo que está tentando modificar 
+	@PreAuthorize("@accessManager.isRequestOwner(#id)")
 	@PutMapping("/{id}")
 	public ResponseEntity<Request> update (@PathVariable(name = "id") Long id,@RequestBody @Valid RequestUpdatedto requestdto){
 		Request request = requestdto.transformToRequest();
