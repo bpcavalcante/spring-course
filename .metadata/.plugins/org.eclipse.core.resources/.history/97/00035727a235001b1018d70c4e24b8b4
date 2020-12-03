@@ -56,7 +56,7 @@ public class UserResource {
 	private JwtManager jwtManager;
 	
 	// Save
-	@Secured({ "ROLE_ADMINISTRATOR" }) // Liberando somente admin para cadastrar um usuário
+	@Secured({ "ROLE_ADMINISTRATOR" })
 	@PostMapping
 	public ResponseEntity<User> save (@RequestBody @Valid UserSavedto userdto){
 		User userToSave = userdto.transformToUser();
