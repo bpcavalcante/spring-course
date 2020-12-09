@@ -1,0 +1,14 @@
+package com.springcourse.repository;
+
+import java.awt.print.Pageable;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.springcourse.domain.RequestFile;
+
+public interface RequestFileRepository extends JpaRepository<RequestFile,Long> {
+	
+	public Page<RequestFile> findAllByRequestId(Long id, Pageable pageable);
+
+}
