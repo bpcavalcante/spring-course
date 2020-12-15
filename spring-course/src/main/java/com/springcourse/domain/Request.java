@@ -65,7 +65,7 @@ public class Request implements Serializable{
 	private List<RequestStage> stages = new ArrayList<RequestStage>();
 	
 	@Getter(onMethod = @__({@JsonIgnore}))
-	@OneToMany(mappedBy = "request_file")
+	@OneToMany(mappedBy = "request")
 	private List<RequestFile> files = new ArrayList<RequestFile>();
 
 }

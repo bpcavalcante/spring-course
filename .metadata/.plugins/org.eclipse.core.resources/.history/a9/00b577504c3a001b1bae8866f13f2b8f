@@ -1,0 +1,9 @@
+package com.springcourse.service.s3;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class S3Service {
+
+	
+}

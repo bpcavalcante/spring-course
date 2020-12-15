@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,6 +20,7 @@ import com.springcourse.model.PageModel;
 import com.springcourse.model.PageRequestModel;
 import com.springcourse.repository.UserRepository;
 import com.springcourse.service.util.HashUtil;
+import com.springcourse.specification.UserSpecification;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -60,8 +61,11 @@ public class UserService implements UserDetailsService {
 	}
 	
 	public PageModel<User> listAllOnLazyMode( PageRequestModel pr){
-		org.springframework.data.domain.Pageable pageable = PageRequest.of(pr.getPage(), pr.getSize());
-		Page<User> page = userRepository.findAll(pageable);
+		org.springframework.data.domain.Pageable pageable = pr.toSpringPageRequest();
+		
+		Specification<User> spec = UserSpecification.search(pr.getSearch());
+		
+		Page<User> page = userRepository.findAll(spec, pageable);
 		
 		PageModel<User> pm = new PageModel<>((int)page.getTotalElements(), page.getSize(), page.getTotalPages(), page.getContent());
 		return pm;

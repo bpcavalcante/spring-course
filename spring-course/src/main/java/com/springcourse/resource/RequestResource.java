@@ -1,6 +1,9 @@
 package com.springcourse.resource;
 
 
+import java.util.List;
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +18,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.springcourse.domain.Request;
+import com.springcourse.domain.RequestFile;
 import com.springcourse.domain.RequestStage;
 import com.springcourse.dto.RequestSavedto;
 import com.springcourse.dto.RequestUpdatedto;
 import com.springcourse.model.PageModel;
 import com.springcourse.model.PageRequestModel;
+import com.springcourse.service.RequestFileService;
 import com.springcourse.service.RequestService;
 import com.springcourse.service.RequestStageService;
+
 
 @RestController
 @RequestMapping(value = "requests")
@@ -32,6 +39,8 @@ public class RequestResource {
 	@Autowired private RequestService requestService;
 	
 	@Autowired private RequestStageService stageService;
+	
+	@Autowired private RequestFileService fileService;
 	
 	
 	// save 
@@ -64,10 +73,9 @@ public class RequestResource {
 	
 	@GetMapping
 	public ResponseEntity<PageModel<Request>> listAll(
-			@RequestParam(value = "page", defaultValue = "0") int page,
-			@RequestParam(value = "size", defaultValue = "10") int size){
+			@RequestParam Map<String, String> params){
 		
-		PageRequestModel pr = new PageRequestModel(page, size);
+		PageRequestModel pr = new PageRequestModel(params);
 		PageModel<Request> pm = requestService.listAllOnLazyMode(pr);
 		
 		return ResponseEntity.ok(pm);
@@ -77,14 +85,32 @@ public class RequestResource {
 	@GetMapping("/{id}/request-stages")
 	public ResponseEntity<PageModel<RequestStage>> listAllStagesById(
 			@PathVariable(name = "id") Long id,
-			@RequestParam(value = "page", defaultValue = "0")int page,
-			@RequestParam(value = "size", defaultValue = "10") int size){
+			@RequestParam Map<String, String> params){
 		
 		
-		PageRequestModel pr = new PageRequestModel(page, size);
+		PageRequestModel pr = new PageRequestModel(params);
 		
 		PageModel<RequestStage> pm = stageService.listAllByRequestIdOnLazyModel(id, pr);
 		return ResponseEntity.ok(pm);
+	}
+	
+	@GetMapping("/{id}/files")
+	public ResponseEntity<PageModel<RequestFile>> listAllFilesById(
+			@PathVariable(name = "id") Long id,
+			@RequestParam Map<String, String> params){
+		PageRequestModel pr = new PageRequestModel(params);
+		PageModel<RequestFile> pm = fileService.listAllByRequestId(id, pr);
+		return ResponseEntity.ok(pm);
+	}
+		
+	
+	// upload
+	@PostMapping("/{id}/files")
+	public ResponseEntity<List<RequestFile>> upload(
+			@RequestParam("files") MultipartFile[] files, @PathVariable(name = "id") Long id){
+		List<RequestFile> requestfiles = fileService.upload(id, files);
+	
+		return ResponseEntity.status(HttpStatus.CREATED).body(requestfiles);
 	}
 	
 

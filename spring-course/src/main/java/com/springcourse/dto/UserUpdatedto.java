@@ -5,13 +5,11 @@ import java.util.List;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.springcourse.domain.Request;
 import com.springcourse.domain.RequestStage;
 import com.springcourse.domain.User;
-import com.springcourse.domain.enums.Role;
 
 import lombok.Getter;
 import lombok.Setter;

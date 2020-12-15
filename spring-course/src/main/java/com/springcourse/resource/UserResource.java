@@ -2,12 +2,11 @@ package com.springcourse.resource;
 
 
 import java.util.List;
-import java.util.stream.Collector;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,6 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticatedPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -87,10 +85,9 @@ public class UserResource {
 	// Lista usuário
 	@GetMapping
 	public ResponseEntity<PageModel<User>> listAll(
-		@RequestParam(value = "page", defaultValue = "0") int page,
-		@RequestParam(value = "size", defaultValue = "10") int size){
+		@RequestParam Map<String, String> params){
 		
-		PageRequestModel pr = new PageRequestModel(page,size);
+		PageRequestModel pr = new PageRequestModel(params);
 		PageModel<User> pm = userService.listAllOnLazyMode(pr);
 		
 		return ResponseEntity.ok(pm);
@@ -119,10 +116,9 @@ public class UserResource {
 	@GetMapping("/{id}/requests")
 	public ResponseEntity<PageModel<Request>> listAllRequestsById(
 			@PathVariable(name = "id") Long id,
-			@RequestParam(value = "size", defaultValue = "10") int size,
-			@RequestParam(value = "page", defaultValue = "0") int page){
+			@RequestParam Map<String, String> params){
 		
-		PageRequestModel pr = new PageRequestModel(page, size);
+		PageRequestModel pr = new PageRequestModel(params);
 		PageModel<Request> pm = requestService.listAllByOwnerIdOnLazyModel(id, pr);
 		
 		return ResponseEntity.ok(pm);
